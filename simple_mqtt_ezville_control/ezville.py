@@ -976,7 +976,7 @@ def ezville_loop(config):
 
         
     # MQTT 통신
-    import paho.mqtt.clint as mqtt
+    import paho.mqtt.client as mqtt
     mqtt_client = mqtt.Client(client_id='mqtt-ezville', callback_api_version=2)
     mqtt_client.on_connect = on_connect
     mqtt_client.on_disconnect = on_disconnect
