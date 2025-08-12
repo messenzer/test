@@ -375,6 +375,15 @@ def ezville_loop(config):
                     k+=1
                     continue
                 else:
+                    if packet == 'F73301C30300840081F6':
+                        log('[INFO] 엘리베이터 도착 신호 감지!')
+                        # batch 장치는 rid, sbc를 1로 고정하여 사용합니다.
+                        rid = 1
+                        sbc = 1
+                        await update_state('batch', 'arrived', rid, sbc, 'ON')
+                        # 이 패킷은 처리했으므로 다음으로 넘어갑니다.
+                        k = k + packet_length
+                        continue
                     STATE_PACKET = False
                     ACK_PACKET = False
                     
